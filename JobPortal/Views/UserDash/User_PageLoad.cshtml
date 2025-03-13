@@ -1,0 +1,117 @@
+﻿@model JobPortal.Models.JobSearch
+@{
+    ViewBag.Title = "User_PageLoad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">*@
+@*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>*@
+
+<h2>Job Search</h2>
+
+<div class="form-group row">
+    <div>
+        @using (Html.BeginForm("searchJob_click", "UserDash", FormMethod.Post))
+        {
+            <label>Experience:</label>
+            @Html.TextBoxFor(m => m.selectJob.jobExp)
+            <label>Skills:</label>
+            @Html.TextBoxFor(m => m.selectJob.jobSkills)
+            <label>Location:</label>
+            @Html.TextBoxFor(m => m.selectJob.jobLoc)
+            <button type="submit" class="btn btn-info">Search</button>
+        }
+    </div>
+</div>
+
+<div>
+    @using (Html.BeginForm("User_PageLoad", "UserDash", FormMethod.Get))
+    {
+        if (Model != null)
+        {
+            if (Model.jobFilterList != null && Model.jobFilterList.Count != 0)
+            {
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.cId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.jobTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.jobDesc)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.jobSal)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.jobLoc)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.jobExp)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.jobSkills)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.jobType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.jobVac)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.selectJob.endDate)
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model.jobFilterList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.cId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.jobTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.jobDesc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.jobSal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.jobLoc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.jobExp)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.jobSkills)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.jobType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.jobVac)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.endDate)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Apply Now", "ApplyCV_Load", "ApplyCV", new { cid = item.cId, jid = item.jobId }, null)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        }
+        else
+        {
+            <script>
+                alert("No data found.");
+            </script>
+        }
+    }
+</div>
+
+

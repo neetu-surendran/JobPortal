@@ -1,0 +1,91 @@
+﻿@model IEnumerable<JobPortal.Models.AdminDash>
+@{
+    ViewBag.Title = "ShowArchived";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Archived Records</h2>
+<div>
+    @using (Html.BeginForm("ShowArchived", "AdminDash", FormMethod.Get))
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(m => m.jobTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jobDesc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jobSal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jobLoc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jobExp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jobSkills)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jobType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.jobVac)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.startDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.endDate)
+                </th>
+            </tr>
+
+            @foreach (var item in ViewBag.Archived)
+            {
+
+                <tr>
+                    <td>@item.Job_Title</td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.Salary
+                    </td>
+                    <td>
+                        @item.Location
+                    </td>
+                    <td>
+                        @item.Experience_years
+                    </td>
+                    <td>
+                        @item.Skills
+                    </td>
+                    <td>
+                        @item.Job_Type
+                    </td>
+                    <td>
+                        @item.Vacancies
+                    </td>
+                    <td>
+                        @item.Job_Status
+                    </td>
+                    <td>
+                        @item.Start_Date.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @item.End_Date.ToString("dd/MM/yyyy")
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Admin_PageLoad")
+</div>
+

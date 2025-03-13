@@ -1,0 +1,114 @@
+﻿@model JobPortal.Models.AdminDash
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div>
+    <h4>Job_Table</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobSal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobSal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobLoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobLoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobExp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobExp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobSkills)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobSkills)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobVac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobVac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDate, "{0:dd-MM-yyyy}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate, "{0:dd-MM-yyyy}")
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.jobId }) |
+    @Html.ActionLink("Back to List", "Admin_PageLoad")
+</p>
+

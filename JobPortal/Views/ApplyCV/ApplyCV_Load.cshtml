@@ -1,0 +1,44 @@
+﻿@model JobPortal.Models.CVInsert
+@{
+    ViewBag.Title = "ApplyCV_Load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload Resume</h2>
+<hr />
+@using (Html.BeginForm("ApplyCV_click", "ApplyCV", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.LabelFor(m => m.resume, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBox("file", "", new { Type = "file" })
+            @Html.ValidationMessageFor(m => m.resume, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @if (TempData.Peek("applied") != null && (bool)TempData.Peek("applied"))
+    {
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-warning" />
+                <p class="text-muted">You have already applied. You can update your resume.</p>
+                @Html.DisplayFor(m => m.msg)
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" class="btn btn-primary" />
+                @Html.DisplayFor(m => m.msg)
+            </div>
+        </div>
+    }
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "User_PageLoad","UserDash")
+</div>
